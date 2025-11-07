@@ -1,0 +1,40 @@
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0; font-family:system-ui,-apple-system,"Noto Sans KR",sans-serif;
+  display:flex; align-items:center; justify-content:center;
+  background:linear-gradient(#f0fff4,#ffffff);
+}
+.wrap{text-align:center; padding:2rem}
+h1{margin:0 0 1.2rem 0; font-size:1.4rem}
+#cloverBtn{
+  font-size:3rem; line-height:1; padding:.8rem 1.2rem;
+  border:2px solid #9ae6b4; background:#ffffff; border-radius:1rem;
+  cursor:pointer; transition:transform .08s ease, box-shadow .2s ease;
+  box-shadow:0 6px 16px rgba(0,0,0,.08);
+}
+#cloverBtn:active{ transform:scale(.96) }
+#cloverBtn:hover{ box-shadow:0 10px 24px rgba(0,0,0,.12) }
+
+/* 뜨는 메시지 */
+#messages{ position:relative; width:100%; height:120px; margin-top:1.4rem; overflow:hidden }
+.toast{
+  position:absolute; left:50%; transform:translateX(-50%);
+  background:#1a202c; color:#fff; padding:.6rem .9rem; border-radius:.7rem;
+  font-size:1rem; opacity:0;
+  box-shadow:0 8px 20px rgba(0,0,0,.18);
+  animation: pop 1200ms ease forwards;
+}
+@keyframes pop{
+  0%   { opacity:0; transform:translate(-50%, 10px) scale(.96) }
+  15%  { opacity:1; transform:translate(-50%, 0)    scale(1.00) }
+  70%  { opacity:1; transform:translate(-50%, -24px) scale(1.00) }
+  100% { opacity:0; transform:translate(-50%, -44px) scale(1.00) }
+}
+
+/* 다크모드 대응 */
+@media (prefers-color-scheme: dark){
+  body{background:linear-gradient(#0d1b12,#0e0e0e); color:#eaeaea}
+  #cloverBtn{background:#111; border-color:#22543d; color:#eaeaea}
+  .toast{background:#2d3748}
+}
